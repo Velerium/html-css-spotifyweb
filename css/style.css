@@ -13,46 +13,96 @@
     clear: both;
 }
 
-[class*="col-"] {
-    height: calc(100vh - 90px);
-}
-
 .sidebar {
+    color: #6f6f6f;
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    z-index: 1002;
 }
 
 .sidebar img {
     width: 50%;
 }
 
+.sidebar span {
+    display: none;
+}
 
-.icons, .user {
+.nav {
+    overflow-y: scroll;
+}
+
+.nav, .user {
     text-align: center;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.nav *, .user * {
+    margin: 2px 0;
+}
+
+.nav #logo img{
+    filter: invert(1);
+    margin: 5px auto;
+}
+
+.playlist {
+    margin-top: 20px;
+    display: none;
+}
+
+.playlist .add {
+    display: inline-block;
+    background-color: #a3a3a3;
+    color: #000;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+.playlist h4 {
+    color: white;
+}
+
+.playlist div {
+    margin: 10px 0;
+}
+
+.user {
     width: 100%;
 }
 
-.icons *, .user * {
-    margin: 5px 0;
+.user hr {
+    display: none;
 }
 
-.icons #logo {
-    filter: invert(1);
+.user h4 {
+    color: white;
+    font-size: 16px;
+    line-height: 25px;
+    margin-left: 35px;
+    display: none;
 }
 
 .profile {
     width: 50%;
-    background-color: #bbb;
+    background-color: #6f6f6f;
     border-radius: 50%;
     margin: 0 auto;
 }
 
 .profile div{
     background-image: url(../img/profile.svg);
-    background-size: 70%;
+    background-size: 65%;
     background-repeat: no-repeat;
     background-position: center;
     height: 25px;
@@ -70,10 +120,11 @@
     height: 90px;
     position: fixed;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 20, 0.8);
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    z-index: 1001;
 }
 
 .top-bar .button {
@@ -107,26 +158,138 @@
 
 .content .item {
     width: 50%;
-    height: 300px;
     padding: 15px;
 }
 
-.content .item-img {
-    background-color: tomato; 
-    padding-bottom: calc(100% - 10px);
+.content .item-img img {
+    width: 100%;
 }
 
-.popular .item-img {
+.content .item-text {
+    text-align: center;
+}
+
+.content .item-text > * {
+    padding-top: 10px;
+}
+
+.popular img {
     border-radius: 50%;
 }
 
+.item-text {
+    margin-bottom: 10px;
+}
+
+.item-text div {
+    color: #7d7f84;
+    font-size: 14px;
+}
 
 .footer-container {
+    position: relative;
     height: 90px;
     display: flex;
     background-color: #282828;
+    z-index: 1001;
 }
 
 .footer-container [class^="col-"] {
     border: 1px #fff solid;
+}
+
+@media all and (min-width: 576px) {
+    
+    .nav, .user {
+        text-align: left;
+    }
+
+    .nav #logo img {
+        display: none;
+    }
+
+    .nav #logo {
+        background-size: 60%;
+        background-image: url(../img/logo.svg);
+        background-repeat: no-repeat;
+        filter: invert(0);
+        width: 100%;
+        height: 50px;
+        margin: 20px 0;
+    }
+
+    .sidebar img {
+        width: 13%;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .sidebar span {
+        display: inline;
+        font-size: 15px;
+    }
+
+    .content ul li {
+        padding: 5px 10px 20px;
+    }
+
+    .playlist {
+        display: block;
+        overflow-y: scroll;
+    }
+
+    .user {
+        padding: 0 18px 6px;
+    }
+    
+    .profile {
+        width: 12%;
+        float: left;
+    }
+
+    .profile div {
+        margin: 0;
+    }
+
+    .user img {
+        width: 7%;
+    }
+
+    .user span {
+        font-size: 12px;
+    }
+
+    .user hr {
+        display: block;
+        height: 1px;
+        background-color: #6f6f6f;
+        border: none;
+        margin: 5px 0 15px;
+    }
+
+    .user h4 {
+        display: block;
+    }
+}
+
+@media all and (min-width: 768px) {
+    
+    .content .item {
+        width: calc(100% / 4);
+    }
+
+    .long {
+        height: 300px;
+    }
+}
+
+@media all and (min-width: 992px){
+
+    .content .item {
+        width: calc(100% / 6);
+    }
+
+    .long {
+        height: auto;
+    }
 }
