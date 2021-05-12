@@ -1,6 +1,7 @@
 .app {
     height: calc(100vh - 90px);
     display: flex;
+    overflow-x: hidden;
 }
 
 .fl {
@@ -237,7 +238,7 @@
 
     .playlist {
         display: block;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     .user {
@@ -281,9 +282,10 @@
     }
 
     .long {
-        height: 300px;
-    }
-}
+        height: 300px; /* Unfortunately, this height is necessary */
+    }                  /* to not break the floats */
+}                        
+
 
 @media all and (min-width: 992px){
 
