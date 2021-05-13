@@ -1,7 +1,6 @@
 .app {
     height: calc(100vh - 90px);
     display: flex;
-    overflow-x: hidden;
 }
 
 .fl {
@@ -138,6 +137,7 @@
     border: 1px solid #fff;
     border-radius: 30px;
     padding: 10px 25px;
+    margin-right: 10px;
 }
 
 .content {
@@ -199,10 +199,104 @@
     display: flex;
     background-color: #282828;
     z-index: 1001;
+    color: #fff;
 }
 
-.footer-container [class^="col-"] {
-    border: 1px #fff solid;
+.footer-container > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-container > div:first-child > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-container > div:first-child img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-container .song-title div {
+    font-size: 10px;
+    color: #7d7f84;
+}
+
+.footer-container .footer-fav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container .footer-fav > div {
+    position: relative;
+}
+
+.footer-container .footer-fav i {
+    color: #7d7f84;
+}
+
+.footer-container > div:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.footer-container .play-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container .play-nav > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-container .play-nav > div i {
+    margin: 0 12px;
+}
+
+.footer-container .play-nav #big {
+    font-size: 25px ;
+}
+
+.footer-container .play-progress > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.footer-container .progress-bar, .progress-played, .volume-bar {
+    height: 5px;
+    background-color: #7d7f84;
+    border-radius: 5px;
+}
+
+.footer-container .progress-bar {
+    width: 60%;
+    margin: 0 20px;
+}
+
+.footer-container .progress-played {
+    width: 25%;
+    background-color: #eee;
+}
+
+.footer-container .settings-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-container .volume-bar {
+    width: 40%;
 }
 
 @media all and (min-width: 576px) {
@@ -255,7 +349,7 @@
     }
 
     .user img {
-        width: 7%;
+        width: 10%;
     }
 
     .user span {
@@ -273,6 +367,15 @@
     .user h4 {
         display: block;
     }
+
+    .top-bar .button {
+        margin-right: 20px;
+    }
+
+    .footer-container > div:first-child img {
+        width: 35px;
+        height: 35px;
+    }
 }
 
 @media all and (min-width: 768px) {
@@ -284,6 +387,19 @@
     .long {
         height: 300px; /* Unfortunately, this height is necessary */
     }                  /* to not break the floats */
+
+    .top-bar .button {
+        margin-right: 30px;
+    }
+
+    .footer-container .footer-fav {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .footer-container .footer-fav div {
+        margin: 0 7px;
+    }
 }                        
 
 
@@ -295,6 +411,10 @@
 
     .long {
         height: auto;
+    }
+
+    .footer-container .play-nav {
+        justify-content: center;
     }
 }
 
