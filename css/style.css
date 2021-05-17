@@ -38,13 +38,13 @@
     overflow-y: hidden;
 }
 
-.nav, .user {
+.nav, .sidebar-bottom {
     text-align: center;
     margin: 0 auto;
     width: 90%;
 }
 
-.nav *, .user * {
+.nav *, .sidebar-bottom * {
     margin: 2px 0;
 }
 
@@ -113,24 +113,21 @@
     font-weight: bold;
 }
 
-.user {
-    width: 100%;
-}
-
-.user img {
+.sidebar-bottom img {
     position: relative;
-    right: 2px;
+    right: 1px;
+    width: 20px;
 }
 
-.user div:hover {
+.sidebar-bottom div:hover {
     color: white;
 }
 
-.user hr {
+.sidebar-bottom hr {
     display: none;
 }
 
-.user h4 {
+.sidebar-bottom h4 {
     color: white;
     font-size: 16px;
     line-height: 25px;
@@ -138,19 +135,27 @@
     display: none;
 }
 
-.profile {
-    width: 55%;
-    background-color: #6f6f6f;
-    border-radius: 50%;
-    margin: 0 10px 0 0;
+.user {
+    display: flex;
+    justify-content: center;
 }
 
-.profile div{
+.profile {
+    width: 25px;
+    height: 25px;
+    background-color: #6f6f6f;
+    border-radius: 50%;
+    float: left;
+}
+
+.profile div {
+    height: 21px;
     background-image: url(../img/profile.svg);
-    background-size: 65%;
     background-repeat: no-repeat;
     background-position: center;
-    height: 25px;
+    background-size: 75%;
+    position: relative;
+    margin: 0;
 }
 
 .content-side {
@@ -177,6 +182,7 @@
     border-radius: 30px;
     padding: 10px 25px;
     margin-right: 10px;
+    transition: all .1s ease-in-out;
 }
 
 .top-bar .button:hover {
@@ -205,9 +211,22 @@
     font-weight: bold;
 }
 
+.content ul li div {
+    transform: scaleX(0); /*This makes the transition start in the middle*/
+    height: 3px;
+    margin-top: 3px;
+    background-color: yellowgreen;
+    border-radius: 30px;
+    transition: transform .2s ease-in-out;
+}
+
 .content ul li:hover {
     color: white;
     cursor: pointer;
+}
+
+.content ul li:hover div {
+    transform: scaleX(1);
 }
 
 .content h2, .content p {
@@ -222,6 +241,7 @@
 
 .content .item-img {
     position: relative;
+    cursor: pointer;
 }
 
 .content .item-img img {
@@ -239,7 +259,6 @@
 
 .content .item-img:hover img {
     opacity: 0.5;
-    cursor: pointer;
 }
 
 .content .item-img:hover i {
@@ -258,6 +277,10 @@
     padding-top: 10px;
     font-weight: bold;
 }
+
+.long {
+    height: 350px; /* Unfortunately, this height is necessary */
+}                  /* to not break the floats */
 
 .popular img {
     border-radius: 50%;
@@ -289,15 +312,22 @@
 }
 
 .footer-container > div:first-child > div {
+    height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-around;
+    text-align: center;
 }
 
 .footer-container > div:first-child img {
-    width: 30px;
-    height: 30px;
+    height: 40px;
+    margin-left: 6px;
+}
+
+.footer-container .song-title {
+    padding-left: 6px;
 }
 
 .footer-container .song-title div {
@@ -348,7 +378,8 @@
 }
 
 .footer-container .play-nav > div i {
-    margin: 0 12px;
+    margin: 0 3px;
+    cursor: pointer;
 }
 
 .footer-container .play-nav #big {
@@ -377,6 +408,7 @@
 .footer-container .progress-bar {
     width: 60%;
     margin: 0 20px;
+    cursor: pointer;
 }
 
 .footer-container .progress-played {
@@ -408,13 +440,18 @@
     align-items: center;
 }
 
+.footer-container .settings-icons i {
+    cursor: pointer;
+}
+
 .footer-container .volume-bar {
     width: 40%;
+    cursor: pointer;
 }
 
 @media all and (min-width: 576px) {
     
-    .nav, .user {
+    .nav, .sidebar-bottom {
         text-align: left;
     }
 
@@ -443,33 +480,20 @@
         padding: 5px 10px 20px;
     }
 
+    .long {
+        height: auto;
+    }
+
     .playlist {
         display: block;
         overflow-y: auto;
     }
 
-    .user {
-        padding: 0 18px 6px;
-    }
-    
-    .profile {
-        width: 12%;
-        float: left;
-    }
-
-    .profile div {
-        margin: 0;
-    }
-
-    .user img {
-        width: 10%;
-    }
-
-    .user span {
+    .sidebar-bottom span {
         font-size: 12px;
     }
 
-    .user hr {
+    .sidebar-bottom hr {
         display: block;
         height: 1px;
         background-color: #6f6f6f;
@@ -477,29 +501,40 @@
         margin: 5px 0 15px;
     }
 
-    .user h4 {
+    .sidebar-bottom h4 {
         display: block;
     }
 
-    .user .profile {
-        width: 14%;
+    .sidebar-bottom .user {
+        display: initial;
+        margin: 0 10px 0 0;
+    }
+
+    .sidebar-bottom img {
+        position: relative;
+        right: 1px;
+        width: 20px;
     }
 
     .top-bar .button {
         margin-right: 20px;
     }
 
+    .footer-container > div:first-child > div {
+        flex-direction: row;
+    }
+
     .footer-container > div:first-child img {
         width: 35px;
         height: 35px;
     }
+
+    .footer-container .play-nav > div i {
+        margin: 0 6px;
+    }
 }
 
 @media all and (min-width: 768px) {
-    
-    .user .profile {
-        width: 13%;
-    }
 
     .content .item {
         width: calc(100% / 4);
@@ -521,14 +556,14 @@
     .footer-container .footer-fav div {
         margin: 0 7px;
     }
+
+    .footer-container .play-nav > div i {
+        margin: 0 12px;
+    }
 }                        
 
 
 @media all and (min-width: 992px){
-
-    .user .profile {
-        width: 15%;
-    }
 
     .content .item {
         width: calc(100% / 6);
@@ -543,22 +578,16 @@
     }
 }
 
-@media all and (min-width: 1380px){
-    .user .profile {
-        width: 10%;
-    }
-}
-
 @media all and (max-height: 530px) {
     
-    .user > div:first-child {
+    .sidebar-bottom > div:first-child {
         display: none;
     }
 }
 
 @media all and (max-height: 470px) {
     
-    .user {
+    .sidebar-bottom {
         display: none;
     }
 }
